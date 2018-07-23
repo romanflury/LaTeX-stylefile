@@ -1,0 +1,257 @@
+%
+% Package fluryroabstract.sty
+%
+% This package alters the geometry and defines new environments to create
+% visually appealing abstracts
+%
+
+
+\ProvidesPackage{fluryroabstract}
+
+\RequirePackage{color}
+\RequirePackage{framed}             
+
+\RequirePackage{geometry}
+\geometry{a4paper, left=10mm, right=10mm, top=20mm, bottom=20mm} 
+
+\setlength{\parindent}{0pt}
+
+\newenvironment{fshaded}{
+\def\FrameCommand{\fcolorbox{framecolor}{shadecolor}}
+\MakeFramed {\FrameRestore}}
+{\endMakeFramed}
+
+% Neue Umgebungen
+
+% Definitionen
+\newenvironment{fdef}[1][]{\definecolor{shadecolor}{rgb}{1,.92,.92}
+    \definecolor{framecolor}{rgb}{1,0,0}
+    \begin{fshaded}\vspace{-5mm}\subsubsection*{#1}\vspace{-1.5mm}}{\end{fshaded}}
+
+% Unwichtigerere Definition
+\newenvironment{fsubdef}[1][]{\definecolor{shadecolor}{rgb}{1,1,1}
+    \definecolor{framecolor}{rgb}{1,0,0}
+    \begin{fshaded}\vspace{-5mm}\subsubsection*{#1}\vspace{-1.5mm}}{\end{fshaded}}
+
+% mathematische Sätze
+\newenvironment{fsatz}[1][]{\definecolor{shadecolor}{rgb}{1,1,.8}
+    \definecolor{framecolor}{rgb}{1,.9,0}
+    \begin{fshaded}\vspace{-5mm}\subsubsection*{#1}\vspace{-2mm}}{\end{fshaded}}
+    
+% Regeln (möglichst nicht zusammen in einem Dokument mit Datenstruktur)
+\newenvironment{fregeln}[1][]{\definecolor{shadecolor}{rgb}{.9,1,.9}
+    \definecolor{framecolor}{rgb}{0,1,0}
+    \begin{fshaded}\vspace{-5mm}\subsubsection*{#1}\vspace{-2mm}}{\end{fshaded}}
+    
+% VI
+\newenvironment{fwichtig}[1][]{\definecolor{shadecolor}{rgb}{.96,.96,1}
+    \definecolor{framecolor}{rgb}{0,0,1}
+    \begin{fshaded}\vspace{-5mm}\subsubsection*{#1}\vspace{-2mm}}{\end{fshaded}}
+
+% Beispiel
+\newenvironment{fbsp}[1][]{\definecolor{shadecolor}{rgb}{1,1,1}
+    \definecolor{framecolor}{rgb}{0,1,0}
+    \begin{fshaded}\vspace{-5mm}\subsubsection*{#1}\vspace{-2mm}}{\end{fshaded}}
+
+% Datenstruktur (möglichst nicht zusammen in einem Dokument mit Regel)
+\newenvironment{fds}[1][]{\definecolor{shadecolor}{rgb}{.9,1,.9}
+    \definecolor{framecolor}{rgb}{0,1,0}
+    \begin{fshaded}\vspace{-5mm}\subsubsection*{#1}\vspace{-2mm}}{\end{fshaded}}
+
+% Eigenschaften (z.B. von definierten Strukturen)
+\newenvironment{feig}[1][]{\definecolor{shadecolor}{rgb}{1,1,1}
+    \definecolor{framecolor}{rgb}{0.996,.65,0}
+    \begin{fshaded}\vspace{-5mm}\subsubsection*{#1}\vspace{-2mm}}{\end{fshaded}}
+    
+% Merksätze
+\newenvironment{fmerke}[1][]{\definecolor{shadecolor}{rgb}{1,1,1}
+    \definecolor{framecolor}{rgb}{0,0,1}
+    \begin{fshaded}\vspace{-5mm}\subsubsection*{#1}\vspace{-2mm}}{\end{fshaded}}
+    
+% Algorithmen
+\newenvironment{falgo}[1][]{\definecolor{shadecolor}{rgb}{1,.9,1}
+    \definecolor{framecolor}{rgb}{1,0,1}
+    \begin{fshaded}\vspace{-5mm}\subsubsection*{#1}\vspace{-1.2mm}}{\end{fshaded}}
+
+% neue Kommandos
+\newcommand{\SP}[1]{\left\langle\mathbf{#1}\right\rangle} % Skalarprodukt <...>
+\newcommand{\modcon}[3]{{{#1}\ \equiv\ {#2}\ (\text{mod} #3)}} %Modulo Makro
+\newcommand{\nequiv}{{\not \equiv}}
+
+
+  % Zahlzeichen
+  \newcommand{\Z}     {\mathbb{Z}}
+  \newcommand{\R}     {\mathbb{R}}
+  \newcommand{\C}     {\mathbb{C}}
+  \newcommand{\N}     {\mathbb{N}} 
+  \newcommand{\Q}     {\mathbb{Q}}
+  
+  % Distribution
+  \newcommand{\ND}    {\mathcal{N}}
+  % Galoiskörper GF
+  \newcommand{\GF}     {\text{GF}}
+  % charakteristisches Polynom (chp)
+  \newcommand{\chp}     {\text{chp}}
+  % römische Zahlen
+  \newcommand{\rom}[1]{\MakeUppercase{\romannumeral #1}}
+  %L_PA
+  \newcommand{\PA}   {\mathcal{L}_{PA}}
+  \newcommand{\LL}    {\mathcal{L}}
+  \newcommand{\Lf}   {\mathcal{L}-Formel}
+  \newcommand{\Lfs}   {\mathcal{L}-Formeln}
+  \newcommand{\M}   {\mathfrak{M}}
+  % identity matrix
+  \newcommand{\ID}{\mbox{$1 \hspace{-1.0mm}  {\bf l}$}}
+
+  
+  
+  %Mengen
+  \newcommand{\Gd}  {G_{\delta} - Menge}
+  
+  
+% Trigonometrie
+\newcommand{\arsinh}     {\text{arsinh}}
+\newcommand{\arcosh}     {\text{arcosh}}
+\newcommand{\artanh}     {\text{artanh}}
+\newcommand{\arcoth}     {\text{arcoth}}
+\newcommand{\arccot}     {\text{arccot}}
+
+%Winkelzeichen
+
+\def\wi{\hbox{$<$}\kern-.71em\hbox{)}}
+
+% Betragszeichen
+\newcommand{\abs}[1]{\left|#1\right|}
+  
+% Kompaktere Listen  
+\newenvironment{itemize_compact}{
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{1pt}
+  \setlength{\parsep}{1pt}
+}{\end{itemize}}
+
+\newenvironment{desc_compact}{
+\begin{description}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{1pt}
+  \setlength{\parsep}{1pt}
+}{\end{description}}
+
+\newenvironment{enumerate_compact}{
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{1pt}
+  \setlength{\parsep}{1pt}
+}{\end{enumerate}}
+
+
+% R
+\newcommand{\prog}[1]{\textsf{#1}}
+\newcommand{\pkg}[1]{\texttt{#1}}
+
+
+% header.sty by RFurrer
+\newcommand{\T}{{}^{\top}}%\newcommand{\T}{{}^{\mathsf{T}}}
+
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\cov}{Cov}                   
+\DeclareMathOperator{\corr}{Corr}                 
+\DeclareMathOperator{\var}{Var}                   
+\DeclareMathOperator{\trace}{tr}                  
+\DeclareMathOperator{\E}{E}                       
+\DeclareMathOperator{\pred}{p}
+\DeclareMathOperator{\vect}{vec}                  
+\DeclareMathOperator{\vech}{vech}                 
+\DeclareMathOperator{\rank}{rank}                 
+\DeclareMathOperator{\e}{e}                       
+%\DeclareMathOperator{\cv}{CV}                     
+\DeclareMathOperator{\GCV}{GCV}                     
+\DeclareMathOperator{\CV}{CV}                     
+\DeclareMathOperator{\BLUP}{BLUP}                 
+\DeclareMathOperator{\MSE}{MSE}                   
+\DeclareMathOperator{\MS}{MS}                   
+\DeclareMathOperator{\df}{df}                   
+\DeclareMathOperator{\bias}{bias}                   
+\DeclareMathOperator{\eig}{eig}                   
+\DeclareMathOperator{\Prec}{Prec}
+\DeclareMathOperator{\mode}{mode}
+
+% Kalligraphischer Schriftsatz
+\newcommand{\cA}{{\cal{A}}}
+\newcommand{\cB}{{\cal{B}}} 
+\newcommand{\cC}{{\cal{C}}}
+\newcommand{\cD}{{\cal{D}}} 
+\newcommand{\cE}{{\cal{E}}}
+\newcommand{\cF}{{\cal{F}}}
+\newcommand{\cG}{{\cal{G}}}
+\newcommand{\cH}{{\cal{H}}}
+\newcommand{\cI}{{\cal{I}}}
+\newcommand{\cJ}{{\cal{J}}}
+\newcommand{\cK}{{\cal{K}}}
+\newcommand{\cL}{{\cal{L}}}
+\newcommand{\cM}{{\cal{M}}} 
+\newcommand{\cN}{{\cal{N}}}
+\newcommand{\cO}{{\cal{O}}} 
+\newcommand{\cP}{{\cal{P}}}
+\newcommand{\cQ}{{\cal{Q}}} 
+\newcommand{\cR}{{\cal{R}}} 
+\newcommand{\cS}{{\cal{S}}} 
+\newcommand{\cT}{{\cal{T}}}
+\newcommand{\cU}{{\cal{U}}}
+\newcommand{\cV}{{\cal{V}}}
+\newcommand{\cW}{{\cal{W}}}
+\newcommand{\cX}{{\cal{X}}} 
+\newcommand{\cY}{{\cal{Y}}}
+\newcommand{\cZ}{{\cal{Z}}} 
+
+% fette griechische kleinbuchstaben
+\newcommand{\balpha}{{\boldsymbol{\alpha}}}
+\newcommand{\bbeta}{{\boldsymbol{\beta}}}
+\newcommand{\bgamma}{{\boldsymbol{\gamma}}}
+\newcommand{\bdelta}{{\boldsymbol{\delta}}}
+\newcommand{\blambda}{{\boldsymbol{\lambda}}}
+\newcommand{\bepsilon}{{\boldsymbol{\epsilon}}}
+\newcommand{\bvarepsilon}{{\boldsymbol{\varepsilon}}}
+\newcommand{\bzeta}{{\boldsymbol{\zeta}}}
+\newcommand{\bfeta}{{\boldsymbol{\eta}}}  %  <----- exception !
+\newcommand{\btheta}{{\boldsymbol{\theta}}{}}
+\newcommand{\bvartheta}{{\boldsymbol{\vartheta}}}
+\newcommand{\biota}{{\boldsymbol{\iota}}}
+\newcommand{\bkappa}{{\boldsymbol{\kappa}}}
+\newcommand{\bmu}{{\boldsymbol{\mu}}}
+\newcommand{\bnu}{{\boldsymbol{\nu}}}
+\newcommand{\bxi}{{\boldsymbol{\xi}}}
+\newcommand{\bpi}{{\boldsymbol{\pi}}}
+\newcommand{\bvarpi}{{\boldsymbol{\varpi}}}
+\newcommand{\brho}{{\boldsymbol{\rho}}}
+\newcommand{\bvarrhoi}{{\boldsymbol{\varrho}}}
+\newcommand{\bsigma}{{\boldsymbol{\sigma}}}
+\newcommand{\bvarsigma}{{\boldsymbol{\varsigma}}}
+\newcommand{\btau}{{\boldsymbol{\tau}}}
+\newcommand{\bvartau}{{\boldsymbol{\vartau}}}
+\newcommand{\bupsilon}{{\boldsymbol{\upsilon}}}
+\newcommand{\bphi}{{\boldsymbol{\phi}}}
+\newcommand{\bvarphi}{{\boldsymbol{\varphi}}}
+\newcommand{\bchi}{{\boldsymbol{\chi}}}
+\newcommand{\bpsi}{{\boldsymbol{\psi}}}
+\newcommand{\bomega}{{\boldsymbol{\omega}}}
+
+
+% fette griechische grossbuchstaben
+\newcommand{\bGamma}{{\boldsymbol{\Gamma}}}
+\newcommand{\bDelta}{{\boldsymbol{\Delta}}}
+\newcommand{\bTheta}{{\boldsymbol{\Theta}}}
+\newcommand{\bLambda}{{\boldsymbol{\Lambda}}{}}
+\newcommand{\bXi}{{\boldsymbol{\Xi}}}
+\newcommand{\bPi}{{\boldsymbol{\Pi}}}
+\newcommand{\bSigma}{{\boldsymbol{\Sigma}}{}}
+\newcommand{\bUpsilon}{{\boldsymbol{\Upsilon}}{}}
+\newcommand{\bPhi}{{\boldsymbol{\Phi}}}
+\newcommand{\bPsi}{{\boldsymbol{\Psi}}}
+\newcommand{\bOmega}{{\boldsymbol{\Omega}}}
+
